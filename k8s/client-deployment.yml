@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: myapp-web
+  template:
+    metadata:
+      labels:
+        component: myapp-web
+    spec:
+      containers:
+      - image: asia.gcr.io/ppedetonline/client:tagversion
+        name: client
+        ports:
+        - containerPort: 3000
